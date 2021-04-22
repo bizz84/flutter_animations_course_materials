@@ -16,5 +16,11 @@
             "request": "launch",
             "type": "dart"
         },
+        {
+            "name": "habit_tracker_flutter",
+            "cwd": "projects/habit_tracker_flutter",
+            "request": "launch",
+            "type": "dart"
+        }
     ]
 }
