@@ -1,0 +1,34 @@
+name: habit_tracker_flutter
+description: A new Flutter project.
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.12.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: 1.0.6
+  flutter_launcher_icons: 0.13.1
+  flutter_svg: 2.0.9
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+# Custom app icon. For more info see: https://pub.dev/packages/flutter_launcher_icons
+flutter_icons:
+  ios: true
+  android: true
+  remove_alpha_ios: true
+  image_path_ios: "assets/app-icon.png"
+  image_path_android: "assets/app-icon.png"
+  adaptive_icon_background: "assets/app-icon-background.png"
+  adaptive_icon_foreground: "assets/app-icon.png"
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/
