@@ -12,7 +12,7 @@ class ElapsedTimeText extends StatelessWidget {
     final hundredsStr = hundreds.toStringAsFixed(0).padLeft(2, '0');
     final secondsStr = seconds.toString().padLeft(2, '0');
     final minutesStr = minutes.toString().padLeft(2, '0');
-    const digitWidth = 24.0;
+    const digitWidth = 12.0;
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -40,7 +40,7 @@ class TimeDigit extends StatelessWidget {
       width: width,
       child: Text(
         text,
-        style: TextStyle(fontSize: 40),
+        style: TextStyle(fontSize: 20),
         textAlign: TextAlign.center,
       ),
     );
