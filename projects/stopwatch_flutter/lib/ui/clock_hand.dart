@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 
 class ClockHand extends StatelessWidget {
   const ClockHand({
-    Key? key,
+    super.key,
     required this.rotationZAngle,
     required this.handThickness,
     required this.handLength,
     required this.color,
-  }) : super(key: key);
+  });
   final double rotationZAngle; // function of the elapsed time
   final double handThickness;
   final double handLength;
