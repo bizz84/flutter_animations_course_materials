@@ -7,6 +7,6 @@ This folder contains the code for the animations game that is covered in section
 - First, run `flutter pub get`
 - Then run the app on iOS or Android
 
-*Note: This project uses Null Safety and requires Flutter 2.0 or above.*
+*Note: This project requires Flutter 3.16 or above.*
 
 Refer to the main [README](/README.md) for more info.
