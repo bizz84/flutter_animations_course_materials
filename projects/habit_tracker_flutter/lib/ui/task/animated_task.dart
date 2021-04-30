@@ -18,6 +18,7 @@ class _AnimatedTaskState extends State<AnimatedTask>
       vsync: this,
       duration: const Duration(milliseconds: 750),
     );
+    _animationController.forward();
   }
 
   @override
@@ -28,8 +29,13 @@ class _AnimatedTaskState extends State<AnimatedTask>
 
   @override
   Widget build(BuildContext context) {
-    return const TaskCompletionRing(
-      progress: 0.6,
+    return AnimatedBuilder(
+      animation: _animationController,
+      builder: (BuildContext context, Widget? child) {
+        return TaskCompletionRing(
+          progress: _animationController.value,
+        );
+      },
     );
   }
 }
