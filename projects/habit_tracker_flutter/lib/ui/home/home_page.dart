@@ -12,7 +12,9 @@ class HomePage extends StatelessWidget {
       body: const Center(
         child: SizedBox(
           width: 240,
-          child: TaskCompletionRing(),
+          child: TaskCompletionRing(
+            progress: 0.4,
+          ),
         ),
       ),
     );
