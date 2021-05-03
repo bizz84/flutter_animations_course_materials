@@ -20,11 +20,15 @@ class TaskWithName extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 8.0),
-        Text(
-          task.name.toUpperCase(),
-          textAlign: TextAlign.center,
-          style: TextStyles.taskName.copyWith(
-            color: AppTheme.of(context).accent,
+        SizedBox(
+          height: 39,
+          child: Text(
+            task.name.toUpperCase(),
+            maxLines: 2,
+            textAlign: TextAlign.center,
+            style: TextStyles.taskName.copyWith(
+              color: AppTheme.of(context).accent,
+            ),
           ),
         ),
       ],
