@@ -56,15 +56,19 @@ class _AnimatedTaskState extends State<AnimatedTask>
         animation: _curveAnimation,
         builder: (BuildContext context, Widget? child) {
           final themeData = AppTheme.of(context);
+          final progress = _curveAnimation.value;
+          final hasCompleted = progress == 1.0;
+          final iconColor =
+              hasCompleted ? themeData.accentNegative : themeData.taskIcon;
           return Stack(
             children: [
               TaskCompletionRing(
-                progress: _curveAnimation.value,
+                progress: progress,
               ),
               Positioned.fill(
                 child: CenteredSvgIcon(
                   iconName: widget.iconName,
-                  color: themeData.taskIcon,
+                  color: iconColor,
                 ),
               ),
             ],
