@@ -16,6 +16,7 @@ class _AnimatedTaskState extends State<AnimatedTask>
     with SingleTickerProviderStateMixin {
   late final AnimationController _animationController;
   late final Animation<double> _curveAnimation;
+  bool _showCheckIcon = false;
   @override
   void initState() {
     super.initState();
@@ -23,6 +24,7 @@ class _AnimatedTaskState extends State<AnimatedTask>
       vsync: this,
       duration: Duration(milliseconds: 750),
     );
+    _animationController.addStatusListener(_checkStatusUpdates);
     _curveAnimation = _animationController.drive(
       CurveTween(curve: Curves.easeInOut),
     );
@@ -30,14 +32,28 @@ class _AnimatedTaskState extends State<AnimatedTask>
 
   @override
   void dispose() {
+    _animationController.removeStatusListener(_checkStatusUpdates);
     _animationController.dispose();
     super.dispose();
+  }
+
+  void _checkStatusUpdates(AnimationStatus status) {
+    if (status == AnimationStatus.completed) {
+      if (mounted) {
+        setState(() => _showCheckIcon = true);
+      }
+      Future.delayed(Duration(seconds: 1), () {
+        if (mounted) {
+          setState(() => _showCheckIcon = false);
+        }
+      });
+    }
   }
 
   void _handleTapDown(TapDownDetails details) {
     if (_animationController.status != AnimationStatus.completed) {
       _animationController.forward();
-    } else {
+    } else if (!_showCheckIcon) {
       _animationController.value = 0.0;
     }
   }
@@ -68,7 +84,9 @@ class _AnimatedTaskState extends State<AnimatedTask>
               ),
               Positioned.fill(
                 child: CenteredSvgIcon(
-                  iconName: widget.iconName,
+                  iconName: hasCompleted && _showCheckIcon
+                      ? AppAssets.check
+                      : widget.iconName,
                   color: iconColor,
                 ),
               ),
