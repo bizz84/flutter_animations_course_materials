@@ -1,16 +1,12 @@
-# colors_numbers_game_flutter
+# Colors / Numbers Game with Flutter Implicit Animations
 
-A new Flutter project.
+This folder contains the code for the animations game that is covered in section 1 of my [Flutter Animations Course](https://nnbd.me/fa).
 
-## Getting Started
+## Running the project
 
-This project is a starting point for a Flutter application.
+- First, run `flutter pub get`
+- Then run the app on iOS or Android
 
-A few resources to get you started if this is your first Flutter project:
+*Note: This project uses Null Safety and requires Flutter 2.0 or above.*
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Refer to the main [README](/README.md) for more info.
