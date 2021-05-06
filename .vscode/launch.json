@@ -5,6 +5,12 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "colors_numbers_game",
+            "cwd": "projects/colors_numbers_game_flutter",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
             "name": "intro_flutter_playground",
             "cwd": "projects/intro_flutter_playground",
             "request": "launch",
