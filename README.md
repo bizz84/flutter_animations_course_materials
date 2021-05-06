@@ -8,9 +8,10 @@ The main project for this course is a Flutter habit tracking app, a (simplified)
 
 ## Projects structure
 
-The entire course includes three [projects](projects/):
+The entire course includes four [projects](projects/):
 
-- **Flutter Intro Playground**: This is [located here](projects/intro_flutter_playground) in section 1
+- **Colors / Numbers Game with Implicit Animations**: This is [located here](projects/colors_numbers_game_flutter) and covered in section 1
+- **Flutter Intro Playground**: This is [located here](projects/intro_flutter_playground) and covered in section 1
 - **Flutter Stopwatch App**: This is [located here](projects/stopwatch_flutter) and covered in section 2
 - **Flutter Habit Tracking App**: This is [located here](projects/habit_tracker_flutter) and covered in sections 3 to 10 (rest of the course)
 
