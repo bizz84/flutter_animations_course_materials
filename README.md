@@ -39,17 +39,44 @@ The entire course includes four [projects](projects/):
 2. Starter project for the Stopwatch app
 3. Dark Mode and Custom System UI Overlay
 4. Creating a periodic Timer
-5. Ticker and TickerProvider
-6. Creating a separate StopwatchRenderer widget
-7. Sizing the Stopwatch UI with AspectRatio
+5. `Ticker` and `TickerProvider`
+6. Creating a separate `StopwatchRenderer` widget
+7. Sizing the Stopwatch UI with `AspectRatio`
 8. Matrix transforms
-9. Getting the circle radius from LayoutBuilder
+9. Getting the circle radius from `LayoutBuilder`
 10. Implementing the animated clock-hand
 11. Completing the stopwatch UI (part 1)
 12. Completing the stopwatch UI (part 2)
 13. Adding the start/stop/reset functionality (part 1)
 14. Adding the start/stop/reset functionality (part 2)
-15. Performance and testing considerations when working with tickers + Extra challenge!
+15. Performance and testing considerations when working with tickers!
+
+### 3. Habit Tracker App Overview
+
+1. Habit Tracker App: Introduction
+2. Download the Starter Project
+3. Linting rules
+4. Code walkthrough: Project Assets
+5. Code walkthrough: Colors and Theming
+
+### 4. Task Completion Ring
+
+1. Module intro & starter project
+2. Task completion ring: Technical planning
+3. Introduction to `CustomPainter`
+4. Drawing a task completion ring with the canvas
+5. Introduction to explicit animations with `AnimationController`
+6. Animated task completion ring with `AnimationController` and `AnimatedBuilder`
+7. Controlling the animation with `GestureDetector`
+8. Adding a centered SVG icon to the animated task
+9. Task completion UI tweaks
+10. Task completion state and final tweaks
+11. Bugfix: Handling tap cancel gestures
+12. Adding a Task Name
+13. Arranging multiple tasks inside a `GridView`
+14. Finished project and Wrap Up
+
+### TBC
 
 ## Additional Resources
 
