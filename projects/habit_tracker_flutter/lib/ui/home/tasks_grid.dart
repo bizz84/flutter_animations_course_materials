@@ -1,12 +1,13 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:habit_tracker_flutter/models/task_preset.dart';
+import 'package:habit_tracker_flutter/models/task.dart';
 import 'package:habit_tracker_flutter/ui/task/task_with_name.dart';
+import 'package:habit_tracker_flutter/ui/task/task_with_name_builder.dart';
 
 class TasksGrid extends StatelessWidget {
   const TasksGrid({Key? key, required this.tasks}) : super(key: key);
-  final List<TaskPreset> tasks;
+  final List<Task> tasks;
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +31,7 @@ class TasksGrid extends StatelessWidget {
           ),
           itemBuilder: (context, index) {
             final task = tasks[index];
-            return TaskWithName(
+            return TaskWithNameBuilder(
               task: task,
             );
           },

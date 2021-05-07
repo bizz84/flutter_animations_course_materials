@@ -18,7 +18,6 @@ class HiveDataStore implements DataStore {
     // register adapters
     Hive.registerAdapter<TaskState>(TaskStateAdapter());
     Hive.registerAdapter<Task>(TaskAdapter());
-    // open boxes
     // task states
     await Hive.openBox<TaskState>(tasksStateBoxName);
     // task lists
@@ -64,36 +63,5 @@ class HiveDataStore implements DataStore {
   @override
   ValueListenable<Box<Task>> frontTasksListenable() {
     return Hive.box<Task>(frontTasksBoxName).listenable();
-  }
-
-  // Save and delete tasks
-  @override
-  Future<void> saveTask(Task task) async {
-    final box = Hive.box<Task>(frontTasksBoxName);
-    if (box.values.isEmpty) {
-      await box.add(task);
-    } else {
-      final index = box.values
-          .toList()
-          .indexWhere((taskAtIndex) => taskAtIndex.id == task.id);
-      if (index >= 0) {
-        await box.putAt(index, task);
-      } else {
-        await box.add(task);
-      }
-    }
-  }
-
-  @override
-  Future<void> deleteTask(Task task) async {
-    final box = Hive.box<Task>(frontTasksBoxName);
-    if (box.isNotEmpty) {
-      final index = box.values
-          .toList()
-          .indexWhere((taskAtIndex) => taskAtIndex.id == task.id);
-      if (index >= 0) {
-        await box.deleteAt(index);
-      }
-    }
   }
 }

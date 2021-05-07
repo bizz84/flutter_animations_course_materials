@@ -5,8 +5,17 @@ import 'package:habit_tracker_flutter/ui/task/task_completion_ring.dart';
 import 'package:habit_tracker_flutter/ui/theming/app_theme.dart';
 
 class AnimatedTask extends StatefulWidget {
-  const AnimatedTask({Key? key, required this.iconName}) : super(key: key);
+  const AnimatedTask({
+    Key? key,
+    required this.iconName,
+    required this.completed,
+    this.onCompleted,
+    this.onDismissed,
+  }) : super(key: key);
   final String iconName;
+  final bool completed;
+  final VoidCallback? onCompleted;
+  final VoidCallback? onDismissed;
 
   @override
   _AnimatedTaskState createState() => _AnimatedTaskState();
@@ -39,6 +48,7 @@ class _AnimatedTaskState extends State<AnimatedTask>
 
   void _checkStatusUpdates(AnimationStatus status) {
     if (status == AnimationStatus.completed) {
+      widget.onCompleted?.call();
       if (mounted) {
         setState(() => _showCheckIcon = true);
       }
@@ -51,9 +61,11 @@ class _AnimatedTaskState extends State<AnimatedTask>
   }
 
   void _handleTapDown(TapDownDetails details) {
-    if (_animationController.status != AnimationStatus.completed) {
+    if (!widget.completed &&
+        _animationController.status != AnimationStatus.completed) {
       _animationController.forward();
     } else if (!_showCheckIcon) {
+      widget.onDismissed?.call();
       _animationController.value = 0.0;
     }
   }
@@ -73,7 +85,7 @@ class _AnimatedTaskState extends State<AnimatedTask>
         animation: _curveAnimation,
         builder: (BuildContext context, Widget? child) {
           final themeData = AppTheme.of(context);
-          final progress = _curveAnimation.value;
+          final progress = widget.completed ? 1.0 : _curveAnimation.value;
           final hasCompleted = progress == 1.0;
           final iconColor =
               hasCompleted ? themeData.accentNegative : themeData.taskIcon;
