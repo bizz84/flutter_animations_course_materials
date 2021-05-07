@@ -5,6 +5,12 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "habit_tracker_flutter",
+            "cwd": "projects/habit_tracker_flutter",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
             "name": "colors_numbers_game",
             "cwd": "projects/colors_numbers_game_flutter",
             "request": "launch",
@@ -19,12 +25,6 @@
         {
             "name": "stopwatch_flutter",
             "cwd": "projects/stopwatch_flutter",
-            "request": "launch",
-            "type": "dart"
-        },
-        {
-            "name": "habit_tracker_flutter",
-            "cwd": "projects/habit_tracker_flutter",
             "request": "launch",
             "type": "dart"
         }
