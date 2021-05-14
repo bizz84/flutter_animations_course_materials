@@ -12,4 +12,13 @@ class HiveDataStore {
     // open boxes
     await Hive.openBox<Task>(tasksBoxName);
   }
+
+  Future<void> createDemoTasks({
+    required List<Task> tasks,
+  }) async {
+    final box = Hive.box<Task>(tasksBoxName);
+    if (box.isEmpty) {
+      await box.addAll(tasks);
+    }
+  }
 }
