@@ -11,9 +11,17 @@ Future<void> main() async {
   await AppAssets.preloadSVGs();
   final dataStore = HiveDataStore();
   await dataStore.init();
-  await dataStore.createDemoTasks(tasks: [
-    Task(id: '1', name: 'Walk the dog', iconName: AppAssets.dog),
-  ]);
+  await dataStore.createDemoTasks(
+    tasks: [
+      Task.create(name: 'Eat a Healthy Meal', iconName: AppAssets.carrot),
+      Task.create(name: 'Walk the Dog', iconName: AppAssets.dog),
+      Task.create(name: 'Do Some Coding', iconName: AppAssets.html),
+      Task.create(name: 'Meditate', iconName: AppAssets.meditation),
+      Task.create(name: 'Do 10 Pushups', iconName: AppAssets.pushups),
+      Task.create(name: 'Sleep 8 Hours', iconName: AppAssets.rest),
+    ],
+    force: false,
+  );
   runApp(MyApp());
 }
 
