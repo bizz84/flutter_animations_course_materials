@@ -25,4 +25,8 @@ class HiveDataStore {
       debugPrint('Box already has ${box.length} items');
     }
   }
+
+  ValueListenable<Box<Task>> tasksListenable() {
+    return Hive.box<Task>(tasksBoxName).listenable();
+  }
 }
