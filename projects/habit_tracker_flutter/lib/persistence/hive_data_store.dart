@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:habit_tracker_flutter/models/task.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
@@ -14,10 +15,14 @@ class HiveDataStore {
 
   Future<void> createDemoTasks({
     required List<Task> tasks,
+    bool force = false,
   }) async {
     final box = Hive.box<Task>(tasksBoxName);
-    if (box.isEmpty) {
+    if (box.isEmpty || force) {
+      await box.clear();
       await box.addAll(tasks);
+    } else {
+      debugPrint('Box already has ${box.length} items');
     }
   }
 }
