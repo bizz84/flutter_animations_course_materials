@@ -27,10 +27,10 @@ The entire course includes four [projects](projects/):
 4. Introduction to Animations
 5. Download the animations playground project
 6. Implicit animations with AnimatedContainer
-7. [Exercise] AnimatedOpacity
+7. [Exercise] `AnimatedOpacity`
 8. Animation Curves
-9.  Intro to TweenAnimationBuilder
-10. Animating HSV colors with TweenAnimationBuilder
+9.  Intro to `TweenAnimationBuilder`
+10. Animating HSV colors with `TweenAnimationBuilder`
 11. Wrap up on Implicit Animations
 
 ### 2. UI Challenge: Stopwatch app
@@ -59,7 +59,7 @@ The entire course includes four [projects](projects/):
 4. Code walkthrough: Project Assets
 5. Code walkthrough: Colors and Theming
 
-### 4. Task Completion Ring
+### 4. Explicit Animations
 
 1. Module intro & starter project
 2. Task completion ring: Technical planning
@@ -75,6 +75,21 @@ The entire course includes four [projects](projects/):
 12. Adding a Task Name
 13. Arranging multiple tasks inside a `GridView`
 14. Finished project and Wrap Up
+
+### 5. Local Data Persistence with Hive
+
+1. Module intro
+2. Technical planning: local vs remote storage
+3. Starter project overview
+4. Introduction to Hive
+5. Creating model classes with Hive
+6. Creating a type adapter with code generation
+7. Creating the `HiveDataStore`
+8. Creating the demo tasks inside `main()`
+9. Creating unique Task IDs with the `uuid` package
+10. Reading tasks with `ValueListenableBuilder`
+11. Wrap up
+
 
 ### TBC
 
