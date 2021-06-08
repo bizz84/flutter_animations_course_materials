@@ -51,6 +51,11 @@ class HiveDataStore {
     final key = taskStateKey(task.id);
     return box.listenable(keys: <String>[key]);
   }
+
+  TaskState taskState(Box<TaskState> box, {required Task task}) {
+    final key = taskStateKey(task.id);
+    return box.get(key) ?? TaskState(taskId: task.id, completed: false);
+  }
 }
 
 final dataStoreProvider = Provider<HiveDataStore>((ref) {
