@@ -23,8 +23,11 @@ Future<void> main() async {
     ],
     force: false,
   );
-  runApp(const ProviderScope(
-    child: MyApp(),
+  runApp(ProviderScope(
+    overrides: [
+      dataStoreProvider.overrideWithValue(dataStore),
+    ],
+    child: const MyApp(),
   ));
 }
 
