@@ -34,5 +34,5 @@ class HiveDataStore {
 }
 
 final dataStoreProvider = Provider<HiveDataStore>((ref) {
-  return HiveDataStore();
+  throw UnimplementedError();
 });

@@ -24,6 +24,9 @@ Future<void> main() async {
     force: false,
   );
   runApp(ProviderScope(
+    overrides: [
+      dataStoreProvider.overrideWithValue(dataStore),
+    ],
     child: MyApp(),
   ));
 }
