@@ -5,8 +5,15 @@ import 'package:habit_tracker_flutter/ui/task/animated_task.dart';
 import 'package:habit_tracker_flutter/ui/theming/app_theme.dart';
 
 class TaskWithName extends StatelessWidget {
-  const TaskWithName({super.key, required this.task});
+  const TaskWithName({
+    super.key,
+    required this.task,
+    this.completed = false,
+    this.onCompleted,
+  });
   final Task task;
+  final bool completed;
+  final ValueChanged<bool>? onCompleted;
 
   @override
   Widget build(BuildContext context) {
@@ -17,6 +24,8 @@ class TaskWithName extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 8.0),
           child: AnimatedTask(
             iconName: task.iconName,
+            completed: completed,
+            onCompleted: onCompleted,
           ),
         ),
         const SizedBox(height: 8.0),
