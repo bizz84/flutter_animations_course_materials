@@ -90,6 +90,17 @@ The entire course includes four [projects](projects/):
 10. Reading tasks with `ValueListenableBuilder`
 11. Wrap up
 
+### 6. State Management with Riverpod
+
+1. Module Intro & Starter Project
+2. Introduction to Riverpod
+3. Creating and using a data store with `Provider` and `Consumer`
+4. Dependency overrides with `ProviderScope`
+5. `TaskState` data modelling
+6. Creating and using a `TaskState` Hive model class
+7. Adding an `onCompleted` callback to the `AnimatedTask` widget
+8. Creating a `TaskWithNameLoader`
+9. Wrap Up + Using the Widget Inspector
 
 ### TBC
 
