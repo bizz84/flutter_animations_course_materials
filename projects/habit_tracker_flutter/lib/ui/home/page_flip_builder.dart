@@ -51,7 +51,33 @@ class PageFlipBuilderState extends State<PageFlipBuilder>
 
   @override
   Widget build(BuildContext context) {
-    // TODO: call frontBuilder or backBuilder depending on some state
-    return widget.frontBuilder(context);
+    return AnimatedPageFlipBuilder(
+      animation: _controller,
+      showFrontSide: _showFrontSide,
+      frontBuilder: widget.frontBuilder,
+      backBuilder: widget.backBuilder,
+    );
+  }
+}
+
+class AnimatedPageFlipBuilder extends AnimatedWidget {
+  const AnimatedPageFlipBuilder({
+    Key? key,
+    required Animation<double> animation,
+    required this.showFrontSide,
+    required this.frontBuilder,
+    required this.backBuilder,
+  }) : super(key: key, listenable: animation);
+  final bool showFrontSide;
+  final WidgetBuilder frontBuilder;
+  final WidgetBuilder backBuilder;
+
+  Animation<double> get animation => listenable as Animation<double>;
+
+  @override
+  Widget build(BuildContext context) {
+    // TODO: Add rotation code
+    print(animation.value);
+    return frontBuilder(context);
   }
 }
