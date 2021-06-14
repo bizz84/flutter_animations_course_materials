@@ -10,10 +10,15 @@ class PageFlipBuilder extends StatefulWidget {
   final WidgetBuilder backBuilder;
 
   @override
-  _PageFlipBuilderState createState() => _PageFlipBuilderState();
+  PageFlipBuilderState createState() => PageFlipBuilderState();
 }
 
-class _PageFlipBuilderState extends State<PageFlipBuilder> {
+class PageFlipBuilderState extends State<PageFlipBuilder> {
+  void flip() {
+    // TODO: Update state
+    print('flip called');
+  }
+
   @override
   Widget build(BuildContext context) {
     // TODO: call frontBuilder or backBuilder depending on some state
