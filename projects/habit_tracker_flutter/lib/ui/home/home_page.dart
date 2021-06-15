@@ -14,20 +14,23 @@ class HomePage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final dataStore = ref.watch(dataStoreProvider);
-    return PageFlipBuilder(
-      key: _pageFlipKey,
-      frontBuilder: (_) => ValueListenableBuilder(
-        valueListenable: dataStore.frontTasksListenable(),
-        builder: (_, Box<Task> box, __) => TasksGridPage(
-          tasks: box.values.toList(),
-          onFlip: () => _pageFlipKey.currentState?.flip(),
+    return Container(
+      color: Colors.black,
+      child: PageFlipBuilder(
+        key: _pageFlipKey,
+        frontBuilder: (_) => ValueListenableBuilder(
+          valueListenable: dataStore.frontTasksListenable(),
+          builder: (_, Box<Task> box, __) => TasksGridPage(
+            tasks: box.values.toList(),
+            onFlip: () => _pageFlipKey.currentState?.flip(),
+          ),
         ),
-      ),
-      backBuilder: (_) => ValueListenableBuilder(
-        valueListenable: dataStore.backTasksListenable(),
-        builder: (_, Box<Task> box, __) => TasksGridPage(
-          tasks: box.values.toList(),
-          onFlip: () => _pageFlipKey.currentState?.flip(),
+        backBuilder: (_) => ValueListenableBuilder(
+          valueListenable: dataStore.backTasksListenable(),
+          builder: (_, Box<Task> box, __) => TasksGridPage(
+            tasks: box.values.toList(),
+            onFlip: () => _pageFlipKey.currentState?.flip(),
+          ),
         ),
       ),
     );
