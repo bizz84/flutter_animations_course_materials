@@ -1,5 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:habit_tracker_flutter/models/app_theme_settings.dart';
+import 'package:habit_tracker_flutter/models/front_or_back_side.dart';
 import 'package:habit_tracker_flutter/models/task.dart';
 import 'package:habit_tracker_flutter/models/task_state.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -9,16 +11,24 @@ class HiveDataStore {
   static const backTasksBoxName = 'backTasks';
   static const tasksStateBoxName = 'tasksState';
   static String taskStateKey(String key) => 'tasksState/$key';
+  static const frontAppThemeBoxName = 'frontAppTheme';
+  static const backAppThemeBoxName = 'backAppTheme';
 
   Future<void> init() async {
     await Hive.initFlutter();
     // register adapters
     Hive.registerAdapter<Task>(TaskAdapter());
     Hive.registerAdapter<TaskState>(TaskStateAdapter());
+    Hive.registerAdapter<AppThemeSettings>(AppThemeSettingsAdapter());
     // open boxes
+    // task lists
     await Hive.openBox<Task>(frontTasksBoxName);
     await Hive.openBox<Task>(backTasksBoxName);
+    // task states
     await Hive.openBox<TaskState>(tasksStateBoxName);
+    // theming
+    await Hive.openBox<AppThemeSettings>(frontAppThemeBoxName);
+    await Hive.openBox<AppThemeSettings>(backAppThemeBoxName);
   }
 
   Future<void> createDemoTasks({
@@ -70,6 +80,27 @@ class HiveDataStore {
   TaskState taskState(Box<TaskState> box, {required Task task}) {
     final key = taskStateKey(task.id);
     return box.get(key) ?? TaskState(taskId: task.id, completed: false);
+  }
+
+  // App Theme Settings
+  Future<void> setAppThemeSettings(
+      {required AppThemeSettings settings,
+      required FrontOrBackSide side}) async {
+    final themeKey = side == FrontOrBackSide.front
+        ? frontAppThemeBoxName
+        : backAppThemeBoxName;
+    final box = Hive.box<AppThemeSettings>(themeKey);
+    await box.put(themeKey, settings);
+  }
+
+  Future<AppThemeSettings> appThemeSettings(
+      {required FrontOrBackSide side}) async {
+    final themeKey = side == FrontOrBackSide.front
+        ? frontAppThemeBoxName
+        : backAppThemeBoxName;
+    final box = Hive.box<AppThemeSettings>(themeKey);
+    final settings = box.get(themeKey);
+    return settings ?? AppThemeSettings.defaults(side);
   }
 }
 
