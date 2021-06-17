@@ -102,6 +102,20 @@ The entire course includes four [projects](projects/):
 8. Creating a `TaskWithNameLoader`
 9. Wrap Up + Using the Widget Inspector
 
+### 7. Page Flip Animation
+
+1. Module Intro: Page Flip Transition
+2. Starter project and walkthrough
+3. Designing the Page Flip widget API with WidgetBuilders
+4. Using a `GlobalKey` to modify the state of a child widget
+5. `AnimationController` setup
+6. `AnimatedBuilder` vs `AnimatedWidget`
+7. Rotation code with `Transform` and `Matrix4`
+8. Interactive page flip transition
+9. Widgets, elements and keys
+10. Extra Challenge: Card flip game
+
+
 ### TBC
 
 ## Additional Resources
