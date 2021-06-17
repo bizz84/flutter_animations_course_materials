@@ -3,6 +3,7 @@ import 'package:habit_tracker_flutter/constants/app_assets.dart';
 import 'package:habit_tracker_flutter/ui/common_widgets/centered_svg_icon.dart';
 import 'package:habit_tracker_flutter/ui/task/task_completion_ring.dart';
 import 'package:habit_tracker_flutter/ui/theming/app_theme.dart';
+import 'package:habit_tracker_flutter/ui/animations/animation_controller_state.dart';
 
 class AnimatedTask extends StatefulWidget {
   const AnimatedTask({
@@ -16,31 +17,26 @@ class AnimatedTask extends StatefulWidget {
   final ValueChanged<bool>? onCompleted;
 
   @override
-  _AnimatedTaskState createState() => _AnimatedTaskState();
+  _AnimatedTaskState createState() =>
+      _AnimatedTaskState(Duration(milliseconds: 750));
 }
 
-class _AnimatedTaskState extends State<AnimatedTask>
-    with SingleTickerProviderStateMixin {
-  late final AnimationController _animationController;
+class _AnimatedTaskState extends AnimationControllerState<AnimatedTask> {
+  _AnimatedTaskState(Duration duration) : super(duration);
   late final Animation<double> _curveAnimation;
   bool _showCheckIcon = false;
   @override
   void initState() {
     super.initState();
-    _animationController = AnimationController(
-      vsync: this,
-      duration: Duration(milliseconds: 750),
-    );
-    _animationController.addStatusListener(_checkStatusUpdates);
-    _curveAnimation = _animationController.drive(
+    animationController.addStatusListener(_checkStatusUpdates);
+    _curveAnimation = animationController.drive(
       CurveTween(curve: Curves.easeInOut),
     );
   }
 
   @override
   void dispose() {
-    _animationController.removeStatusListener(_checkStatusUpdates);
-    _animationController.dispose();
+    animationController.removeStatusListener(_checkStatusUpdates);
     super.dispose();
   }
 
@@ -60,17 +56,17 @@ class _AnimatedTaskState extends State<AnimatedTask>
 
   void _handleTapDown(TapDownDetails details) {
     if (!widget.completed &&
-        _animationController.status != AnimationStatus.completed) {
-      _animationController.forward();
+        animationController.status != AnimationStatus.completed) {
+      animationController.forward();
     } else if (!_showCheckIcon) {
       widget.onCompleted?.call(false);
-      _animationController.value = 0.0;
+      animationController.value = 0.0;
     }
   }
 
   void _handleTapCancel() {
-    if (_animationController.status != AnimationStatus.completed) {
-      _animationController.reverse();
+    if (animationController.status != AnimationStatus.completed) {
+      animationController.reverse();
     }
   }
 
