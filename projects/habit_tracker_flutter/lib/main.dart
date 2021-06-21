@@ -54,7 +54,7 @@ class MyApp extends StatelessWidget {
       ),
       home: AppTheme(
         data: AppThemeData.defaultWithSwatch(AppColors.red),
-        child: HomePage(),
+        child: const HomePage(),
       ),
     );
   }
