@@ -46,6 +46,11 @@ class SlidingPanelAnimatorState
       ),
       builder: (context, child) {
         final animationValue = animationController.value;
+        // if not on-screen, return empty container
+        if (animationValue == 0.0) {
+          return Container();
+        }
+        // else return the SlidingPanel
         final screenWidth = MediaQuery.of(context).size.width;
         final offsetX = _getOffsetX(screenWidth, animationValue);
         return Transform.translate(

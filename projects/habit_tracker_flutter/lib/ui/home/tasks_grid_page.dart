@@ -4,6 +4,7 @@ import 'package:habit_tracker_flutter/models/task.dart';
 import 'package:habit_tracker_flutter/ui/home/home_page_bottom_options.dart';
 import 'package:habit_tracker_flutter/ui/home/tasks_grid.dart';
 import 'package:habit_tracker_flutter/ui/sliding_panel/sliding_panel.dart';
+import 'package:habit_tracker_flutter/ui/sliding_panel/sliding_panel_animator.dart';
 import 'package:habit_tracker_flutter/ui/sliding_panel/theme_selection_close.dart';
 import 'package:habit_tracker_flutter/ui/sliding_panel/theme_selection_list.dart';
 import 'package:habit_tracker_flutter/ui/theming/app_theme.dart';
@@ -32,7 +33,7 @@ class TasksGridPage extends StatelessWidget {
               bottom: 6,
               left: 0,
               width: SlidingPanel.leftPanelFixedWidth,
-              child: SlidingPanel(
+              child: SlidingPanelAnimator(
                 direction: SlideDirection.leftToRight,
                 child: ThemeSelectionClose(),
               ),
@@ -42,7 +43,7 @@ class TasksGridPage extends StatelessWidget {
               right: 0,
               width: MediaQuery.of(context).size.width -
                   SlidingPanel.leftPanelFixedWidth,
-              child: SlidingPanel(
+              child: SlidingPanelAnimator(
                 direction: SlideDirection.rightToLeft,
                 child: ThemeSelectionList(
                   currentThemeSettings:
