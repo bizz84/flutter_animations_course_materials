@@ -4,6 +4,7 @@ import 'package:habit_tracker_flutter/models/task.dart';
 import 'package:habit_tracker_flutter/persistence/hive_data_store.dart';
 import 'package:habit_tracker_flutter/ui/home/tasks_grid_page.dart';
 import 'package:habit_tracker_flutter/ui/sliding_panel/sliding_panel_animator.dart';
+import 'package:habit_tracker_flutter/ui/theming/app_theme_manager.dart';
 import 'package:hive/hive.dart';
 import 'package:page_flip_builder/page_flip_builder.dart';
 
@@ -38,6 +39,13 @@ class _HomePageState extends State<HomePage> {
               rightAnimatorKey: _frontSlidingPanelRightAnimatorKey,
               tasks: box.values.toList(),
               onFlip: () => _pageFlipKey.currentState?.flip(),
+              themeSettings: ref.watch(frontThemeManagerProvider),
+              onColorIndexSelected: (colorIndex) => ref
+                  .read(frontThemeManagerProvider.notifier)
+                  .updateColorIndex(colorIndex),
+              onVariantIndexSelected: (variantIndex) => ref
+                  .read(frontThemeManagerProvider.notifier)
+                  .updateVariantIndex(variantIndex),
             ),
           ),
           backBuilder: (_) => ValueListenableBuilder(
@@ -48,6 +56,13 @@ class _HomePageState extends State<HomePage> {
               rightAnimatorKey: _backSlidingPanelRightAnimatorKey,
               tasks: box.values.toList(),
               onFlip: () => _pageFlipKey.currentState?.flip(),
+              themeSettings: ref.watch(backThemeManagerProvider),
+              onColorIndexSelected: (colorIndex) => ref
+                  .read(backThemeManagerProvider.notifier)
+                  .updateColorIndex(colorIndex),
+              onVariantIndexSelected: (variantIndex) => ref
+                  .read(backThemeManagerProvider.notifier)
+                  .updateVariantIndex(variantIndex),
             ),
           ),
         ),
