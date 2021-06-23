@@ -20,6 +20,14 @@ class SlidingPanelAnimatorState
     extends AnimationControllerState<SlidingPanelAnimator> {
   SlidingPanelAnimatorState(Duration duration) : super(duration);
 
+  late final _curveAnimation = Tween(
+    begin: 0.0,
+    end: 1.0,
+  ).animate(CurvedAnimation(
+    parent: animationController,
+    curve: Curves.easeInOutCubic,
+  ));
+
   void slideIn() {
     animationController.forward();
   }
@@ -38,13 +46,13 @@ class SlidingPanelAnimatorState
   @override
   Widget build(BuildContext context) {
     return AnimatedBuilder(
-      animation: animationController,
+      animation: _curveAnimation,
       child: SlidingPanel(
         child: widget.child,
         direction: widget.direction,
       ),
       builder: (context, child) {
-        final animationValue = animationController.value;
+        final animationValue = _curveAnimation.value;
         // if not on-screen, return empty container
         if (animationValue == 0.0) {
           return Container();

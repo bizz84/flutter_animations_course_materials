@@ -12,11 +12,25 @@ import 'package:habit_tracker_flutter/ui/theming/app_theme.dart';
 class TasksGridPage extends StatelessWidget {
   const TasksGridPage({
     Key? key,
+    required this.leftAnimatorKey,
+    required this.rightAnimatorKey,
     required this.tasks,
     this.onFlip,
   }) : super(key: key);
+  final GlobalKey<SlidingPanelAnimatorState> leftAnimatorKey;
+  final GlobalKey<SlidingPanelAnimatorState> rightAnimatorKey;
   final List<Task> tasks;
   final VoidCallback? onFlip;
+
+  void _enterEditMode() {
+    leftAnimatorKey.currentState?.slideIn();
+    rightAnimatorKey.currentState?.slideIn();
+  }
+
+  void _exitEditMode() {
+    leftAnimatorKey.currentState?.slideOut();
+    rightAnimatorKey.currentState?.slideOut();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -28,14 +42,18 @@ class TasksGridPage extends StatelessWidget {
             TasksGridContents(
               tasks: tasks,
               onFlip: onFlip,
+              onEnterEditMode: _enterEditMode,
             ),
             Positioned(
               bottom: 6,
               left: 0,
               width: SlidingPanel.leftPanelFixedWidth,
               child: SlidingPanelAnimator(
+                key: leftAnimatorKey,
                 direction: SlideDirection.leftToRight,
-                child: ThemeSelectionClose(),
+                child: ThemeSelectionClose(
+                  onClose: _exitEditMode,
+                ),
               ),
             ),
             Positioned(
@@ -44,6 +62,7 @@ class TasksGridPage extends StatelessWidget {
               width: MediaQuery.of(context).size.width -
                   SlidingPanel.leftPanelFixedWidth,
               child: SlidingPanelAnimator(
+                key: rightAnimatorKey,
                 direction: SlideDirection.rightToLeft,
                 child: ThemeSelectionList(
                   currentThemeSettings:
@@ -66,9 +85,11 @@ class TasksGridContents extends StatelessWidget {
     Key? key,
     required this.tasks,
     this.onFlip,
+    this.onEnterEditMode,
   }) : super(key: key);
   final List<Task> tasks;
   final VoidCallback? onFlip;
+  final VoidCallback? onEnterEditMode;
 
   @override
   Widget build(BuildContext context) {
@@ -86,6 +107,7 @@ class TasksGridContents extends StatelessWidget {
         ),
         HomePageBottomOptions(
           onFlip: onFlip,
+          onEnterEditMode: onEnterEditMode,
         ),
       ],
     );
