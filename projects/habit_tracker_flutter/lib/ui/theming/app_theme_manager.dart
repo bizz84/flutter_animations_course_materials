@@ -22,3 +22,13 @@ class AppThemeManager extends StateNotifier<AppThemeSettings> {
     dataStore.setAppThemeSettings(settings: state, side: side);
   }
 }
+
+final frontThemeManagerProvider =
+    StateNotifierProvider<AppThemeManager, AppThemeSettings>((ref) {
+  throw UnimplementedError();
+});
+
+final backThemeManagerProvider =
+    StateNotifierProvider<AppThemeManager, AppThemeSettings>((ref) {
+  throw UnimplementedError();
+});
