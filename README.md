@@ -115,6 +115,19 @@ The entire course includes four [projects](projects/):
 9. Widgets, elements and keys
 10. Extra Challenge: Card flip game
 
+## 8. Advanced Theming
+
+1. Module Intro: Advanced Theming
+2. Starter project and walkthrough
+3. Showing the bottom panels
+4. Creating a SlidingPanelAnimator
+5. Using the SlidingPanelAnimator
+6. Animating the sliding panels
+7. Managing app theme state changes: an overview
+8. Implementing the AppThemeManager class with StateNotifier
+9. Creating and using the AppThemeManager providers
+10. Applying the AppThemeSettings
+11. Advanced animated theming with ImplicitlyAnimatedWidget
 
 ### TBC
 
