@@ -61,6 +61,7 @@ class TasksGridState extends State<TasksGrid>
               isEditing: false,
               editTaskButtonBuilder: (_) => StaggeredScaleAnimatedWidget(
                 animation: animationController,
+                index: index,
                 child: EditTaskButton(
                   onPressed: () => debugPrint('Edit Item'),
                 ),
