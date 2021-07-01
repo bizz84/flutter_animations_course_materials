@@ -35,15 +35,13 @@ class TasksGridPage extends StatelessWidget {
   void _enterEditMode() {
     leftAnimatorKey.currentState?.slideIn();
     rightAnimatorKey.currentState?.slideIn();
-    // TODO: Uncomment when enterEditMode() is added
-    //gridKey.currentState?.enterEditMode();
+    gridKey.currentState?.enterEditMode();
   }
 
   void _exitEditMode() {
     leftAnimatorKey.currentState?.slideOut();
     rightAnimatorKey.currentState?.slideOut();
-    // TODO: Uncomment when exitEditMode() is added
-    //gridKey.currentState?.exitEditMode();
+    gridKey.currentState?.exitEditMode();
   }
 
   @override

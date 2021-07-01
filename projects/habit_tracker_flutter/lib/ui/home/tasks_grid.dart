@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:habit_tracker_flutter/models/task.dart';
+import 'package:habit_tracker_flutter/ui/animations/animation_controller_state.dart';
 import 'package:habit_tracker_flutter/ui/common_widgets/edit_task_button.dart';
 import 'package:habit_tracker_flutter/ui/task/task_with_name_loader.dart';
 
@@ -12,10 +13,20 @@ class TasksGrid extends StatefulWidget {
   final VoidCallback? onEditTask;
 
   @override
-  TasksGridState createState() => TasksGridState();
+  TasksGridState createState() => TasksGridState(Duration(milliseconds: 300));
 }
 
-class TasksGridState extends State<TasksGrid> {
+class TasksGridState extends AnimationControllerState<TasksGrid> {
+  TasksGridState(Duration duration) : super(duration);
+
+  void enterEditMode() {
+    animationController.forward();
+  }
+
+  void exitEditMode() {
+    animationController.reverse();
+  }
+
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(
