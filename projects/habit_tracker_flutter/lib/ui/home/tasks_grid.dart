@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:habit_tracker_flutter/models/task.dart';
+import 'package:habit_tracker_flutter/ui/animations/staggered_scale_animated_widget.dart';
 import 'package:habit_tracker_flutter/ui/common_widgets/edit_task_button.dart';
 import 'package:habit_tracker_flutter/ui/task/task_with_name_loader.dart';
 
@@ -58,8 +59,11 @@ class TasksGridState extends State<TasksGrid>
             return TaskWithNameLoader(
               task: task,
               isEditing: false,
-              editTaskButtonBuilder: (_) => EditTaskButton(
-                onPressed: () => debugPrint('Edit Item'),
+              editTaskButtonBuilder: (_) => StaggeredScaleAnimatedWidget(
+                animation: animationController,
+                child: EditTaskButton(
+                  onPressed: () => debugPrint('Edit Item'),
+                ),
               ),
             );
           },
