@@ -129,6 +129,19 @@ The entire course includes four [projects](projects/):
 10. Applying the AppThemeSettings
 11. Advanced animated theming with ImplicitlyAnimatedWidget
 
+## 9. More Explicit Animations
+
+1. Module Intro
+2. Starter Project & Walkthrough
+3. Controlling animations on the TasksGrid widget
+4. Adding an AnimatedWidget subclass to scale widgets
+5. Staggered animations
+6. Adding an AddTaskItem widget
+7. Fade in/out animation with an Opacity widget
+8. Explicit animations with FadeTransition and ScaleTransition
+9. Overview: built-in transition vs implicitly animated widgets in Flutter
+10. Bugfix: disabling task completion in edit mode
+
 ### TBC
 
 ## Additional Resources
