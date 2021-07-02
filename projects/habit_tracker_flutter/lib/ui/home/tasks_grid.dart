@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:habit_tracker_flutter/models/task.dart';
 import 'package:habit_tracker_flutter/ui/animations/staggered_scale_animated_widget.dart';
 import 'package:habit_tracker_flutter/ui/common_widgets/edit_task_button.dart';
+import 'package:habit_tracker_flutter/ui/task/add_task_item.dart';
 import 'package:habit_tracker_flutter/ui/task/task_with_name_loader.dart';
 
 class TasksGrid extends StatefulWidget {
@@ -45,7 +46,7 @@ class TasksGridState extends State<TasksGrid>
         // Use max(x, 0.1) to prevent layout error when keyword is visible in modal page
         final mainAxisSpacing =
             max((constraints.maxHeight - taskHeight * 3) / 2.0, 0.1);
-        final tasksLength = widget.tasks.length;
+        final tasksLength = min(6, widget.tasks.length + 1);
         return GridView.builder(
           physics: const NeverScrollableScrollPhysics(),
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -55,6 +56,11 @@ class TasksGridState extends State<TasksGrid>
             childAspectRatio: aspectRatio,
           ),
           itemBuilder: (context, index) {
+            if (index == widget.tasks.length) {
+              return AddTaskItem(
+                onCompleted: () => debugPrint('Add New Item'),
+              );
+            }
             final task = widget.tasks[index];
             return TaskWithNameLoader(
               task: task,
