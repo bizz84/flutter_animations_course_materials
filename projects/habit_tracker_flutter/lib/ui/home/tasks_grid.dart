@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:habit_tracker_flutter/models/task.dart';
 import 'package:habit_tracker_flutter/ui/animations/animation_controller_state.dart';
+import 'package:habit_tracker_flutter/ui/animations/opacity_animated_widget.dart';
 import 'package:habit_tracker_flutter/ui/animations/staggered_scale_animated_widget.dart';
 import 'package:habit_tracker_flutter/ui/common_widgets/edit_task_button.dart';
 import 'package:habit_tracker_flutter/ui/task/add_task_item.dart';
@@ -51,8 +52,11 @@ class TasksGridState extends AnimationControllerState<TasksGrid> {
           ),
           itemBuilder: (context, index) {
             if (index == widget.tasks.length) {
-              return AddTaskItem(
-                onCompleted: () => print('Add New Item'),
+              return OpacityAnimatedWidget(
+                animation: animationController,
+                child: AddTaskItem(
+                  onCompleted: () => print('Add New Item'),
+                ),
               );
             }
             final task = widget.tasks[index];
