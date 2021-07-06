@@ -22,12 +22,16 @@ class TasksGrid extends StatefulWidget {
 class TasksGridState extends AnimationControllerState<TasksGrid> {
   TasksGridState(Duration duration) : super(duration);
 
+  bool _isEditing = false;
+
   void enterEditMode() {
     animationController.forward();
+    setState(() => _isEditing = true);
   }
 
   void exitEditMode() {
     animationController.reverse();
+    setState(() => _isEditing = false);
   }
 
   @override
@@ -55,14 +59,14 @@ class TasksGridState extends AnimationControllerState<TasksGrid> {
               return CustomFadeTransition(
                 animation: animationController,
                 child: AddTaskItem(
-                  onCompleted: () => print('Add New Item'),
+                  onCompleted: _isEditing ? () => print('Add New Item') : null,
                 ),
               );
             }
             final task = widget.tasks[index];
             return TaskWithNameLoader(
               task: task,
-              isEditing: false,
+              isEditing: _isEditing,
               editTaskButtonBuilder: (_) => StaggeredScaleTransition(
                 animation: animationController,
                 index: index,
