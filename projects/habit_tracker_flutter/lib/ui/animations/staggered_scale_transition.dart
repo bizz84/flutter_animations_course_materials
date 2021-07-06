@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-class StaggeredScaleAnimatedWidget extends AnimatedWidget {
-  StaggeredScaleAnimatedWidget({
+class StaggeredScaleTransition extends StatelessWidget {
+  StaggeredScaleTransition({
     super.key,
     required Animation<double> animation,
     required int index,
     required this.child,
-  })  : scaleAnimation = Tween<double>(
+  }) : scaleAnimation = Tween<double>(
           begin: 0.0,
           end: 1.0,
         ).animate(
@@ -18,15 +18,14 @@ class StaggeredScaleAnimatedWidget extends AnimatedWidget {
               curve: Curves.easeInOutCubic,
             ),
           ),
-        ),
-        super(listenable: animation);
+        );
   final Widget child;
   final Animation<double> scaleAnimation;
 
   @override
   Widget build(BuildContext context) {
-    return Transform.scale(
-      scale: scaleAnimation.value,
+    return ScaleTransition(
+      scale: scaleAnimation,
       alignment: Alignment.center,
       child: child,
     );
