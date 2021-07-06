@@ -2,8 +2,8 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:habit_tracker_flutter/models/task.dart';
-import 'package:habit_tracker_flutter/ui/animations/opacity_animated_widget.dart';
-import 'package:habit_tracker_flutter/ui/animations/staggered_scale_animated_widget.dart';
+import 'package:habit_tracker_flutter/ui/animations/custom_fade_transition.dart';
+import 'package:habit_tracker_flutter/ui/animations/staggered_scale_transition.dart';
 import 'package:habit_tracker_flutter/ui/common_widgets/edit_task_button.dart';
 import 'package:habit_tracker_flutter/ui/task/add_task_item.dart';
 import 'package:habit_tracker_flutter/ui/task/task_with_name_loader.dart';
@@ -58,7 +58,7 @@ class TasksGridState extends State<TasksGrid>
           ),
           itemBuilder: (context, index) {
             if (index == widget.tasks.length) {
-              return OpacityAnimatedWidget(
+              return CustomFadeTransition(
                 animation: animationController,
                 child: AddTaskItem(
                   onCompleted: () => debugPrint('Add New Item'),
@@ -69,7 +69,7 @@ class TasksGridState extends State<TasksGrid>
             return TaskWithNameLoader(
               task: task,
               isEditing: false,
-              editTaskButtonBuilder: (_) => StaggeredScaleAnimatedWidget(
+              editTaskButtonBuilder: (_) => StaggeredScaleTransition(
                 animation: animationController,
                 index: index,
                 child: EditTaskButton(

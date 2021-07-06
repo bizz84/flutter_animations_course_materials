@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class OpacityAnimatedWidget extends AnimatedWidget {
-  OpacityAnimatedWidget({
+class CustomFadeTransition extends StatelessWidget {
+  CustomFadeTransition({
     super.key,
     required Animation<double> animation,
     required this.child,
-  })  : opacityAnimation = Tween<double>(
+  }) : opacityAnimation = Tween<double>(
           begin: 0.0,
           end: 1.0,
         ).animate(
@@ -13,15 +13,14 @@ class OpacityAnimatedWidget extends AnimatedWidget {
             parent: animation,
             curve: Curves.easeInOutCubic,
           ),
-        ),
-        super(listenable: animation);
+        );
   final Animation<double> opacityAnimation;
   final Widget child;
 
   @override
   Widget build(BuildContext context) {
-    return Opacity(
-      opacity: opacityAnimation.value,
+    return FadeTransition(
+      opacity: opacityAnimation,
       child: child,
     );
   }
