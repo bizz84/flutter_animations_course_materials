@@ -1,7 +1,7 @@
-import 'package:hive/hive.dart';
 import 'package:habit_tracker_flutter/constants/app_colors.dart';
 import 'package:habit_tracker_flutter/models/front_or_back_side.dart';
 import 'package:habit_tracker_flutter/ui/theming/app_theme.dart';
+import 'package:hive/hive.dart';
 
 part 'app_theme_settings.g.dart';
 

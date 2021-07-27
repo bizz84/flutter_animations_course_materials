@@ -84,7 +84,7 @@ class AppAssets {
     ];
     for (final asset in assets) {
       await precachePicture(
-        ExactAssetPicture(SvgPicture.svgStringDecoder, asset),
+        ExactAssetPicture(SvgPicture.svgStringDecoderBuilder, asset),
         null,
       );
     }

@@ -142,11 +142,18 @@ The entire course includes four [projects](projects/):
 9. Overview: built-in transition vs implicitly animated widgets in Flutter
 10. Bugfix: disabling task completion in edit mode
 
-### TBC
+## 10. Add and Edit Tasks
+
+1. Module Intro: Add and Edit Tasks
+2. Navigating to the Add Task and Edit Task pages
+3. Overview: AddTaskPage with slivers
+4. Overview: TaskDetailsPage and SelectIconPage
+5. Overview: Onboarding
+6. Conclusion and Next Steps
 
 ## Additional Resources
 
-A few official resources from the Flutter website:
+### Useful resources from the Flutter docs
 
 - [Introduction to animations | Flutter.dev](https://flutter.dev/docs/development/ui/animations)
   - [Animations overview](https://flutter.dev/docs/development/ui/animations/overview)
@@ -154,16 +161,57 @@ A few official resources from the Flutter website:
   - [Implicit animations](https://flutter.dev/docs/development/ui/animations/implicit-animations)
   - [Hero animations](https://flutter.dev/docs/development/ui/animations/hero-animations)
   - [Staggered animations](https://flutter.dev/docs/development/ui/animations/staggered-animations)
+- [Implicit animations Codelab | Flutter.dev](https://flutter.dev/docs/codelabs/implicit-animations)
+- [Animtions Tutorial | Flutter.dev](https://flutter.dev/docs/development/ui/animations/tutorial)
 - [Animation and motion widgets | Flutter.dev](https://flutter.dev/docs/development/ui/widgets/animation)
+- [Reduce shader compilation jank on mobile | Flutter.dev](https://flutter.dev/docs/perf/rendering/shader)
 
-Some additional resources from Code With Andrea:
+### More Flutter animation tutorials from Code With Andrea
 
+- [Learn Flutter Animations by Example + Free Gallery App on GitHub](https://codewithandrea.com/videos/learn-flutter-animations/)
 - [Flutter Animations: Interactive Page Flip Widget](https://codewithandrea.com/videos/flutter-animations-page-flip-widget-part1/)
 - [Flutter Animations: Interactive Page Flip Widget \[Part 2\]](https://codewithandrea.com/videos/flutter-animations-page-flip-widget-part2/)
+- [How to reduce AnimationController boilerplate code: Flutter Hooks vs extending the State class](https://codewithandrea.com/videos/reduce-animation-controller-boilerplate-flutter-hooks/)
+- [Flutter: Why do TweenAnimationBuilder and AnimatedBuilder have a child argument?](https://codewithandrea.com/articles/flutter-animated-builder-child-widget-argument/)
+- [Colors / Numbers Game with Flutter Implicit Animations](https://codewithandrea.com/videos/colors-numbers-game-flutter-implicit-animations/)
+- [Flutter Timer vs Ticker: A Case Study](https://codewithandrea.com/articles/flutter-timer-vs-ticker/)
+- [Flutter: How to Draw a Task Completion Ring with CustomPainter](https://codewithandrea.com/articles/flutter-drawing-with-custom-painter/)
+- [Flutter: Animated Task Completion Ring with AnimationController and AnimatedBuilder](https://codewithandrea.com/articles/flutter-animation-controller-animated-builder/)
 
-Page Flip Builder package:
+### My Flutter Animations Gallery on GitHub
 
-- [page_flip_builder | pub.dev](https://pub.dev/packages/page_flip_builder)
+- [Flutter Animations Gallery](https://github.com/bizz84/flutter_animations_gallery)
+
+### My animation packages on pub.dev
+
+- [page_flip_builder](https://pub.dev/packages/page_flip_builder): a custom Flutter widget that enables interactive page-flip transitions in your app.
+- [pushable_button](https://pub.dev/packages/pushable_button): a 3D pushable button, ideal for games or important CTAs in the app.
+
+### Popular Flutter animations packages
+
+- [Rive](https://pub.dev/packages/rive): a real-time interactive design and animation tool.
+- [SpinKit](https://pub.dev/packages/flutter_spinkit): a collection of animated loading indicators that you can use in your apps.
+- [Animations](https://pub.dev/packages/animations): pre-canned animations for commonly-desired effects.
+- [Funvas](https://pub.dev/packages/funvas): a growing collection of free examples showing how to create canvas-based animations based on time and math functions.
+- [Simple Animations](https://github.com/felixblaschke/simple_animations): a powerful package that makes it easier to implement custom animations for common use cases.
+- [Staggered Animations](https://pub.dev/packages/flutter_staggered_animations): easily add staggered animations to your `ListView`, `GridView`, `Column` and `Row` children.
+- [Spring](https://pub.dev/packages/spring): a collection of 12 widgets based on spring animation effects.
+
+### Other cool Flutter animations tutorials
+
+- [Marcin Szałek - Flutter: scroll to perfection - Flutter Warsaw #15](https://youtu.be/F6WJAvRWbPo)
+  
+### Streaks app
+
+The main project of this course is based on this app:
+
+- [Streaks app home page](https://streaksapp.com/)
+
+The complete set of designs for this app can be found here:
+
+- [Streaks | mobbin.design](https://mobbin.design/apps/streaks)
+
+---
 
 ### [License: MIT](LICENSE.md)
 
