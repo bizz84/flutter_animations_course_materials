@@ -131,7 +131,7 @@ class TasksGridContents extends StatelessWidget {
             child: TasksGrid(
               key: gridKey,
               tasks: tasks,
-              onEditTask: onExitEditMode,
+              onAddOrEditTask: onExitEditMode,
             ),
           ),
         ),
