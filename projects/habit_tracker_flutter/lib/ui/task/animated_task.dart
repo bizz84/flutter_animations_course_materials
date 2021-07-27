@@ -10,9 +10,13 @@ class AnimatedTask extends StatefulWidget {
     Key? key,
     required this.iconName,
     required this.completed,
+    this.isEditing = false,
+    this.hasCompletedState = true,
     this.onCompleted,
   }) : super(key: key);
   final String iconName;
+  final bool isEditing;
+  final bool hasCompletedState;
   final bool completed;
   final ValueChanged<bool>? onCompleted;
 
@@ -43,19 +47,24 @@ class _AnimatedTaskState extends AnimationControllerState<AnimatedTask> {
   void _checkStatusUpdates(AnimationStatus status) {
     if (status == AnimationStatus.completed) {
       widget.onCompleted?.call(true);
-      if (mounted) {
-        setState(() => _showCheckIcon = true);
-      }
-      Future.delayed(Duration(seconds: 1), () {
+      if (widget.hasCompletedState) {
         if (mounted) {
-          setState(() => _showCheckIcon = false);
+          setState(() => _showCheckIcon = true);
         }
-      });
+        Future.delayed(Duration(seconds: 1), () {
+          if (mounted) {
+            setState(() => _showCheckIcon = false);
+          }
+        });
+      } else {
+        animationController.value = 0.0;
+      }
     }
   }
 
   void _handleTapDown(TapDownDetails details) {
-    if (!widget.completed &&
+    if (!widget.isEditing &&
+        !widget.completed &&
         animationController.status != AnimationStatus.completed) {
       animationController.forward();
     } else if (!_showCheckIcon) {
@@ -65,7 +74,8 @@ class _AnimatedTaskState extends AnimationControllerState<AnimatedTask> {
   }
 
   void _handleTapCancel() {
-    if (animationController.status != AnimationStatus.completed) {
+    if (!widget.isEditing &&
+        animationController.status != AnimationStatus.completed) {
       animationController.reverse();
     }
   }

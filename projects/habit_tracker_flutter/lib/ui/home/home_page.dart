@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:habit_tracker_flutter/models/task.dart';
 import 'package:habit_tracker_flutter/persistence/hive_data_store.dart';
+import 'package:habit_tracker_flutter/ui/home/tasks_grid.dart';
 import 'package:habit_tracker_flutter/ui/home/tasks_grid_page.dart';
 import 'package:habit_tracker_flutter/ui/sliding_panel/sliding_panel_animator.dart';
 import 'package:habit_tracker_flutter/ui/theming/app_theme_manager.dart';
@@ -19,10 +20,12 @@ class _HomePageState extends State<HomePage> {
       GlobalKey<SlidingPanelAnimatorState>();
   final _frontSlidingPanelRightAnimatorKey =
       GlobalKey<SlidingPanelAnimatorState>();
+  final _frontGridKey = GlobalKey<TasksGridState>();
   final _backSlidingPanelLeftAnimatorKey =
       GlobalKey<SlidingPanelAnimatorState>();
   final _backSlidingPanelRightAnimatorKey =
       GlobalKey<SlidingPanelAnimatorState>();
+  final _backGridKey = GlobalKey<TasksGridState>();
   @override
   Widget build(BuildContext context) {
     return Consumer(builder: (_, ref, __) {
@@ -37,6 +40,7 @@ class _HomePageState extends State<HomePage> {
               key: ValueKey(1),
               leftAnimatorKey: _frontSlidingPanelLeftAnimatorKey,
               rightAnimatorKey: _frontSlidingPanelRightAnimatorKey,
+              gridKey: _frontGridKey,
               tasks: box.values.toList(),
               onFlip: () => _pageFlipKey.currentState?.flip(),
               themeSettings: ref.watch(frontThemeManagerProvider),
@@ -54,6 +58,7 @@ class _HomePageState extends State<HomePage> {
               key: ValueKey(2),
               leftAnimatorKey: _backSlidingPanelLeftAnimatorKey,
               rightAnimatorKey: _backSlidingPanelRightAnimatorKey,
+              gridKey: _backGridKey,
               tasks: box.values.toList(),
               onFlip: () => _pageFlipKey.currentState?.flip(),
               themeSettings: ref.watch(backThemeManagerProvider),
