@@ -11,9 +11,13 @@ class HiveDataStore {
   static const frontTasksBoxName = 'frontTasks';
   static const backTasksBoxName = 'backTasks';
   static const tasksStateBoxName = 'tasksState';
+  static const flagsBoxName = 'flags';
   static String taskStateKey(String key) => 'tasksState/$key';
   static const frontAppThemeBoxName = 'frontAppTheme';
   static const backAppThemeBoxName = 'backAppTheme';
+
+  static const alwaysShowAddTaskKey = 'alwaysShowAddTask';
+  static const didAddFirstTaskKey = 'didAddFirstTask';
 
   Future<void> init() async {
     await Hive.initFlutter();
@@ -30,6 +34,8 @@ class HiveDataStore {
     // theming
     await Hive.openBox<AppThemeSettings>(frontAppThemeBoxName);
     await Hive.openBox<AppThemeSettings>(backAppThemeBoxName);
+    // flags
+    await Hive.openBox<bool>(flagsBoxName);
   }
 
   Future<void> createDemoTasks({
@@ -102,6 +108,73 @@ class HiveDataStore {
     final box = Hive.box<AppThemeSettings>(themeKey);
     final settings = box.get(themeKey);
     return settings ?? AppThemeSettings.defaults(side);
+  }
+
+  // Save and delete tasks
+  Future<void> saveTask(Task task, FrontOrBackSide frontOrBackSide) async {
+    final boxName = frontOrBackSide == FrontOrBackSide.front
+        ? frontTasksBoxName
+        : backTasksBoxName;
+    final box = Hive.box<Task>(boxName);
+    if (box.values.isEmpty) {
+      await box.add(task);
+    } else {
+      final index = box.values
+          .toList()
+          .indexWhere((taskAtIndex) => taskAtIndex.id == task.id);
+      if (index >= 0) {
+        await box.putAt(index, task);
+      } else {
+        await box.add(task);
+      }
+    }
+  }
+
+  Future<void> deleteTask(Task task, FrontOrBackSide frontOrBackSide) async {
+    final boxName = frontOrBackSide == FrontOrBackSide.front
+        ? frontTasksBoxName
+        : backTasksBoxName;
+    final box = Hive.box<Task>(boxName);
+    if (box.isNotEmpty) {
+      final index = box.values
+          .toList()
+          .indexWhere((taskAtIndex) => taskAtIndex.id == task.id);
+      if (index >= 0) {
+        await box.deleteAt(index);
+      }
+    }
+  }
+
+  // Did Add First Task
+  Future<void> setDidAddFirstTask(bool value) async {
+    final box = Hive.box<bool>(flagsBoxName);
+    await box.put(didAddFirstTaskKey, value);
+  }
+
+  ValueListenable<Box<bool>> didAddFirstTaskListenable() {
+    return Hive.box<bool>(flagsBoxName)
+        .listenable(keys: <String>[didAddFirstTaskKey]);
+  }
+
+  bool didAddFirstTask(Box<bool> box) {
+    final value = box.get(didAddFirstTaskKey);
+    return value ?? false;
+  }
+
+  // Always Show Add Task
+  Future<void> setAlwaysShowAddTask(bool value) async {
+    final box = Hive.box<bool>(flagsBoxName);
+    await box.put(alwaysShowAddTaskKey, value);
+  }
+
+  ValueListenable<Box<bool>> alwaysShowAddTaskListenable() {
+    return Hive.box<bool>(flagsBoxName)
+        .listenable(keys: <String>[alwaysShowAddTaskKey]);
+  }
+
+  bool alwaysShowAddTask(Box<bool> box) {
+    final value = box.get(alwaysShowAddTaskKey);
+    return value ?? true;
   }
 }
 

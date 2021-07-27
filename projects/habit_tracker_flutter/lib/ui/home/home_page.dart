@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:habit_tracker_flutter/models/front_or_back_side.dart';
 import 'package:habit_tracker_flutter/models/task.dart';
 import 'package:habit_tracker_flutter/persistence/hive_data_store.dart';
 import 'package:habit_tracker_flutter/ui/home/tasks_grid.dart';
@@ -9,12 +10,13 @@ import 'package:habit_tracker_flutter/ui/theming/app_theme_manager.dart';
 import 'package:hive/hive.dart';
 import 'package:page_flip_builder/page_flip_builder.dart';
 
-class HomePage extends StatefulWidget {
+// Note: extending ConsumerStatefulWidget so that we can access the WidgetRef directly in the state class
+class HomePage extends ConsumerStatefulWidget {
   @override
   _HomePageState createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _HomePageState extends ConsumerState<HomePage> {
   final _pageFlipKey = GlobalKey<PageFlipBuilderState>();
   final _frontSlidingPanelLeftAnimatorKey =
       GlobalKey<SlidingPanelAnimatorState>();
@@ -28,13 +30,16 @@ class _HomePageState extends State<HomePage> {
   final _backGridKey = GlobalKey<TasksGridState>();
   @override
   Widget build(BuildContext context) {
-    return Consumer(builder: (_, ref, __) {
-      final dataStore = ref.watch(dataStoreProvider);
-      return Container(
-        color: Colors.black,
-        child: PageFlipBuilder(
-          key: _pageFlipKey,
-          frontBuilder: (_) => ValueListenableBuilder(
+    final dataStore = ref.watch(dataStoreProvider);
+    return Container(
+      color: Colors.black,
+      child: PageFlipBuilder(
+        key: _pageFlipKey,
+        frontBuilder: (_) => ProviderScope(
+          overrides: [
+            frontOrBackSideProvider.overrideWithValue(FrontOrBackSide.front)
+          ],
+          child: ValueListenableBuilder(
             valueListenable: dataStore.frontTasksListenable(),
             builder: (_, Box<Task> box, __) => TasksGridPage(
               key: ValueKey(1),
@@ -52,7 +57,12 @@ class _HomePageState extends State<HomePage> {
                   .updateVariantIndex(variantIndex),
             ),
           ),
-          backBuilder: (_) => ValueListenableBuilder(
+        ),
+        backBuilder: (_) => ProviderScope(
+          overrides: [
+            frontOrBackSideProvider.overrideWithValue(FrontOrBackSide.back)
+          ],
+          child: ValueListenableBuilder(
             valueListenable: dataStore.backTasksListenable(),
             builder: (_, Box<Task> box, __) => TasksGridPage(
               key: ValueKey(2),
@@ -71,7 +81,7 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
         ),
-      );
-    });
+      ),
+    );
   }
 }
