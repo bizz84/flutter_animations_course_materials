@@ -168,11 +168,15 @@ The entire course includes four [projects](projects/):
 
 ### More Flutter animation tutorials from Code With Andrea
 
+- [Learn Flutter Animations in 8 Minutes + Free Gallery App on GitHub](https://codewithandrea.com/videos/learn-flutter-animations/)
 - [Flutter Animations: Interactive Page Flip Widget](https://codewithandrea.com/videos/flutter-animations-page-flip-widget-part1/)
 - [Flutter Animations: Interactive Page Flip Widget \[Part 2\]](https://codewithandrea.com/videos/flutter-animations-page-flip-widget-part2/)
 - [How to reduce AnimationController boilerplate code: Flutter Hooks vs extending the State class](https://codewithandrea.com/videos/reduce-animation-controller-boilerplate-flutter-hooks/)
 - [Flutter: Why do TweenAnimationBuilder and AnimatedBuilder have a child argument?](https://codewithandrea.com/articles/flutter-animated-builder-child-widget-argument/)
 - [Colors / Numbers Game with Flutter Implicit Animations](https://codewithandrea.com/videos/colors-numbers-game-flutter-implicit-animations/)
+- [Flutter Timer vs Ticker: A Case Study](https://codewithandrea.com/articles/flutter-timer-vs-ticker/)
+- [Flutter: How to Draw a Task Completion Ring with CustomPainter](https://codewithandrea.com/articles/flutter-drawing-with-custom-painter/)
+- [Flutter: Animated Task Completion Ring with AnimationController and AnimatedBuilder](https://codewithandrea.com/articles/flutter-animation-controller-animated-builder/)
 
 ### My Flutter Animations Gallery on GitHub
 
