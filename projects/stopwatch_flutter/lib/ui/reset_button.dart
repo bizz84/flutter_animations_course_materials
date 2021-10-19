@@ -15,6 +15,7 @@ class ResetButton extends StatelessWidget {
             alignment: Alignment.center,
             child: Text(
               'Reset',
+              style: TextStyle(color: Colors.white),
             ),
           ),
         ),

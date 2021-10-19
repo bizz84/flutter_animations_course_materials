@@ -17,6 +17,7 @@ class StartStopButton extends StatelessWidget {
             alignment: Alignment.center,
             child: Text(
               isRunning ? 'Stop' : 'Start',
+              style: TextStyle(color: Colors.white),
             ),
           ),
         ),
