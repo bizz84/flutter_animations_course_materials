@@ -1,22 +1,22 @@
 import 'package:adaptive_action_sheet/adaptive_action_sheet.dart';
 import 'package:flutter/material.dart';
-import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:habit_tracker_flutter/constants/app_assets.dart';
 import 'package:habit_tracker_flutter/constants/text_styles.dart';
 import 'package:habit_tracker_flutter/models/front_or_back_side.dart';
 import 'package:habit_tracker_flutter/models/task.dart';
 import 'package:habit_tracker_flutter/models/task_preset.dart';
 import 'package:habit_tracker_flutter/persistence/hive_data_store.dart';
-import 'package:habit_tracker_flutter/ui/common_widgets/app_bar_icon_button.dart';
 import 'package:habit_tracker_flutter/ui/add_task/custom_text_field.dart';
-import 'package:habit_tracker_flutter/ui/common_widgets/primary_button.dart';
 import 'package:habit_tracker_flutter/ui/add_task/select_icon_page.dart';
 import 'package:habit_tracker_flutter/ui/add_task/task_preset_list_tile.dart';
-import 'package:habit_tracker_flutter/ui/add_task/text_field_header.dart';
-import 'package:habit_tracker_flutter/ui/common_widgets/edit_task_button.dart';
 import 'package:habit_tracker_flutter/ui/add_task/task_ring_with_image.dart';
+import 'package:habit_tracker_flutter/ui/add_task/text_field_header.dart';
+import 'package:habit_tracker_flutter/ui/common_widgets/app_bar_icon_button.dart';
+import 'package:habit_tracker_flutter/ui/common_widgets/edit_task_button.dart';
+import 'package:habit_tracker_flutter/ui/common_widgets/primary_button.dart';
 import 'package:habit_tracker_flutter/ui/theming/app_theme.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 
 class TaskDetailsPage extends StatelessWidget {
   const TaskDetailsPage({

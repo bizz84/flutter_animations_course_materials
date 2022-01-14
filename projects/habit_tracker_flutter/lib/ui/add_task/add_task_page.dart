@@ -3,10 +3,10 @@ import 'package:habit_tracker_flutter/constants/app_assets.dart';
 import 'package:habit_tracker_flutter/constants/text_styles.dart';
 import 'package:habit_tracker_flutter/models/task_preset.dart';
 import 'package:habit_tracker_flutter/ui/add_task/add_task_navigator.dart';
-import 'package:habit_tracker_flutter/ui/common_widgets/app_bar_icon_button.dart';
 import 'package:habit_tracker_flutter/ui/add_task/custom_text_field.dart';
 import 'package:habit_tracker_flutter/ui/add_task/task_preset_list_tile.dart';
 import 'package:habit_tracker_flutter/ui/add_task/text_field_header.dart';
+import 'package:habit_tracker_flutter/ui/common_widgets/app_bar_icon_button.dart';
 import 'package:habit_tracker_flutter/ui/theming/app_theme.dart';
 
 class AddTaskPage extends StatelessWidget {

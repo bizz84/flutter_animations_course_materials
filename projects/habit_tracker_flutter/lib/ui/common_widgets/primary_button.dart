@@ -1,5 +1,4 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 import 'package:habit_tracker_flutter/constants/app_colors.dart';
 import 'package:habit_tracker_flutter/constants/text_styles.dart';
 import 'package:habit_tracker_flutter/ui/theming/app_theme.dart';

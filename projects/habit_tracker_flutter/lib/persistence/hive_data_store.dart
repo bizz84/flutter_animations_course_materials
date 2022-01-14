@@ -4,7 +4,6 @@ import 'package:habit_tracker_flutter/models/app_theme_settings.dart';
 import 'package:habit_tracker_flutter/models/front_or_back_side.dart';
 import 'package:habit_tracker_flutter/models/task.dart';
 import 'package:habit_tracker_flutter/models/task_state.dart';
-import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 class HiveDataStore {
