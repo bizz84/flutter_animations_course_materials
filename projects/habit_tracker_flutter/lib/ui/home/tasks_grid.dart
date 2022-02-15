@@ -27,6 +27,11 @@ class TasksGrid extends StatefulWidget {
 
 class TasksGridState extends State<TasksGrid>
     with SingleTickerProviderStateMixin {
+  // * By declaring the [AnimationController] explicitly here, we ensure it does
+  // * not get disposed when the [TasksGrid] is disposed.
+  // * This is necessary when the page flip effect takes place, as the parent
+  // * widget still holds onto a GlobalKey, meaning that the animationController
+  // * will be needed again later (hence it should **not** be disposed).
   late final animationController =
       AnimationController(vsync: this, duration: Duration(milliseconds: 300));
 
