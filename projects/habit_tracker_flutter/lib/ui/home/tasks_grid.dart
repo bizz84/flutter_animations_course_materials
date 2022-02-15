@@ -7,7 +7,6 @@ import 'package:habit_tracker_flutter/models/front_or_back_side.dart';
 import 'package:habit_tracker_flutter/models/task.dart';
 import 'package:habit_tracker_flutter/ui/add_task/add_task_navigator.dart';
 import 'package:habit_tracker_flutter/ui/add_task/task_details_page.dart';
-import 'package:habit_tracker_flutter/ui/animations/animation_controller_state.dart';
 import 'package:habit_tracker_flutter/ui/animations/custom_fade_transition.dart';
 import 'package:habit_tracker_flutter/ui/animations/staggered_scale_transition.dart';
 import 'package:habit_tracker_flutter/ui/common_widgets/edit_task_button.dart';
@@ -23,11 +22,13 @@ class TasksGrid extends StatefulWidget {
   final VoidCallback? onAddOrEditTask;
 
   @override
-  TasksGridState createState() => TasksGridState(Duration(milliseconds: 300));
+  TasksGridState createState() => TasksGridState();
 }
 
-class TasksGridState extends AnimationControllerState<TasksGrid> {
-  TasksGridState(Duration duration) : super(duration);
+class TasksGridState extends State<TasksGrid>
+    with SingleTickerProviderStateMixin {
+  late final animationController =
+      AnimationController(vsync: this, duration: Duration(milliseconds: 300));
 
   bool _isEditing = false;
 
