@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:habit_tracker_flutter/constants/app_assets.dart';
 import 'package:habit_tracker_flutter/constants/app_colors.dart';
 import 'package:habit_tracker_flutter/constants/text_styles.dart';
@@ -8,6 +7,7 @@ import 'package:habit_tracker_flutter/models/task.dart';
 import 'package:habit_tracker_flutter/ui/add_task/add_task_navigator.dart';
 import 'package:habit_tracker_flutter/ui/task/task_with_name.dart';
 import 'package:habit_tracker_flutter/ui/theming/app_theme.dart';
+import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 
 class OnboardingPage extends StatelessWidget {
   Future<void> _addTask(BuildContext context, AppThemeData appThemeData) async {
