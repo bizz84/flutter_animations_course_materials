@@ -2,7 +2,6 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:habit_tracker_flutter/models/task.dart';
-import 'package:habit_tracker_flutter/ui/animations/animation_controller_state.dart';
 import 'package:habit_tracker_flutter/ui/animations/custom_fade_transition.dart';
 import 'package:habit_tracker_flutter/ui/animations/staggered_scale_transition.dart';
 import 'package:habit_tracker_flutter/ui/common_widgets/edit_task_button.dart';
@@ -16,11 +15,19 @@ class TasksGrid extends StatefulWidget {
   final VoidCallback? onEditTask;
 
   @override
-  TasksGridState createState() => TasksGridState(Duration(milliseconds: 300));
+  TasksGridState createState() => TasksGridState();
 }
 
-class TasksGridState extends AnimationControllerState<TasksGrid> {
-  TasksGridState(Duration duration) : super(duration);
+class TasksGridState extends State<TasksGrid>
+    with SingleTickerProviderStateMixin {
+  // * By declaring the [AnimationController] explicitly here, we ensure it does
+  // * not get disposed when the [TasksGrid] is disposed (as it would be the
+  // * case if we used the [AnimationControllerState] helper).
+  // * This is necessary when the page flip effect takes place, as the parent
+  // * widget still holds onto a GlobalKey, meaning that the animationController
+  // * will be needed again later (hence it should **not** be disposed).
+  late final animationController =
+      AnimationController(vsync: this, duration: Duration(milliseconds: 300));
 
   bool _isEditing = false;
 
