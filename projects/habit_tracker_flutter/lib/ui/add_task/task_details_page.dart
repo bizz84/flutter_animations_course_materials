@@ -112,7 +112,7 @@ class _ConfirmTaskContentsState extends ConsumerState<ConfirmTaskContents> {
       actions: <BottomSheetAction>[
         BottomSheetAction(
           title: const Text('Delete'),
-          onPressed: () => Navigator.of(context).pop(true),
+          onPressed: (context) => Navigator.of(context).pop(true),
         ),
       ],
       cancelAction: CancelAction(

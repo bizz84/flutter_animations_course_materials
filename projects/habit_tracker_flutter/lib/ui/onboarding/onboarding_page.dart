@@ -28,7 +28,7 @@ class OnboardingPage extends StatelessWidget {
     // * This page only shows on app startup until the first task is added,
     // * so it's ok to choose a default swatch and app theme.
     // * The user will be able to customize this later.
-    final defaultColorSwatch = AppColors.red;
+    const defaultColorSwatch = AppColors.red;
     final defaultAppThemeVariants = AppThemeVariants(defaultColorSwatch);
     final appThemeData = defaultAppThemeVariants.themes[0];
     return AppTheme(
