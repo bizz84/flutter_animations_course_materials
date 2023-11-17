@@ -18,10 +18,10 @@ class ElapsedTimeText extends StatelessWidget {
       children: [
         TimeDigit(minutesStr.substring(0, 1), width: digitWidth),
         TimeDigit(minutesStr.substring(1, 2), width: digitWidth),
-        const TimeDigit(':', width: 6),
+        const TimeDigit(':', width: 10),
         TimeDigit(secondsStr.substring(0, 1), width: digitWidth),
         TimeDigit(secondsStr.substring(1, 2), width: digitWidth),
-        const TimeDigit('.', width: 6),
+        const TimeDigit('.', width: 10),
         TimeDigit(hundredsStr.substring(0, 1), width: digitWidth),
         TimeDigit(hundredsStr.substring(1, 2), width: digitWidth),
       ],
