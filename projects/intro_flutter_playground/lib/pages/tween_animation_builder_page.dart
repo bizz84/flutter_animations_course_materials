@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 
 class TweenAnimationBuilderPage extends StatelessWidget {
+  const TweenAnimationBuilderPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('TweenAnimationBuilder'),
+        title: const Text('TweenAnimationBuilder'),
       ),
-      body: Center(
+      body: const Center(
         child: HSVColorSelector(),
       ),
     );
@@ -15,8 +17,10 @@ class TweenAnimationBuilderPage extends StatelessWidget {
 }
 
 class HSVColorSelector extends StatefulWidget {
+  const HSVColorSelector({super.key});
+
   @override
-  _HSVColorSelectorState createState() => _HSVColorSelectorState();
+  State<HSVColorSelector> createState() => _HSVColorSelectorState();
 }
 
 class _HSVColorSelectorState extends State<HSVColorSelector> {
@@ -28,17 +32,17 @@ class _HSVColorSelectorState extends State<HSVColorSelector> {
       children: [
         AnimatedContainer(
           color: HSVColor.fromAHSV(1.0, _hue, 1.0, 1.0).toColor(),
-          duration: Duration(milliseconds: 1500),
+          duration: const Duration(milliseconds: 1500),
           width: 200,
           height: 200,
         ),
-        SizedBox(height: 48.0),
+        const SizedBox(height: 48.0),
         TweenAnimationBuilder<double>(
           tween: Tween<double>(
             begin: 0.0,
             end: _hue,
           ),
-          duration: Duration(milliseconds: 1500),
+          duration: const Duration(milliseconds: 1500),
           builder: (context, hue, child) {
             final hsvColor = HSVColor.fromAHSV(1.0, hue, 1.0, 1.0);
             return Container(
@@ -48,9 +52,9 @@ class _HSVColorSelectorState extends State<HSVColorSelector> {
             );
           },
         ),
-        SizedBox(height: 48.0),
+        const SizedBox(height: 48.0),
         Padding(
-          padding: EdgeInsets.symmetric(horizontal: 20.0),
+          padding: const EdgeInsets.symmetric(horizontal: 20.0),
           child: Container(
             height: 30.0,
             decoration: BoxDecoration(

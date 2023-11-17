@@ -35,8 +35,10 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 
 class AnimatedContainerPage extends StatefulWidget {
+  const AnimatedContainerPage({super.key});
+
   @override
-  _AnimatedContainerPageState createState() => _AnimatedContainerPageState();
+  State<AnimatedContainerPage> createState() => _AnimatedContainerPageState();
 }
 
 class _AnimatedContainerPageState extends State<AnimatedContainerPage> {
@@ -73,7 +75,7 @@ class _AnimatedContainerPageState extends State<AnimatedContainerPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('AnimatedContainer'),
+        title: const Text('AnimatedContainer'),
       ),
       body: Center(
         child: AnimatedContainer(
@@ -85,15 +87,14 @@ class _AnimatedContainerPageState extends State<AnimatedContainerPage> {
             borderRadius: _borderRadius,
           ),
           // Define how long the animation should take.
-          duration: Duration(seconds: 1),
+          duration: const Duration(seconds: 1),
           // Provide an optional curve to make the animation feel smoother.
           curve: Curves.fastOutSlowIn, // fastOutSlowIn
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.play_arrow),
-        // When the user taps the button
         onPressed: _randomize,
+        child: const Icon(Icons.play_arrow),
       ),
     );
   }

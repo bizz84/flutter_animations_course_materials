@@ -34,6 +34,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 import 'package:flutter/material.dart';
 
 class AnimatedOpacityPage extends StatefulWidget {
+  const AnimatedOpacityPage({super.key});
+
   @override
   createState() => AnimatedOpacityPageState();
 }
@@ -49,7 +51,7 @@ class AnimatedOpacityPageState extends State<AnimatedOpacityPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('AnimatedOpacity'),
+        title: const Text('AnimatedOpacity'),
       ),
       body: Center(
         child: Column(
@@ -57,13 +59,13 @@ class AnimatedOpacityPageState extends State<AnimatedOpacityPage> {
           children: [
             AnimatedOpacity(
               opacity: _opacity,
-              duration: Duration(seconds: 1),
+              duration: const Duration(seconds: 1),
               curve: Curves.fastOutSlowIn,
-              child: FlutterLogo(size: 200),
+              child: const FlutterLogo(size: 200),
             ),
             ElevatedButton(
-              child: Text('Fade Logo'),
               onPressed: _changeOpacity,
+              child: const Text('Fade Logo'),
             ),
           ],
         ),
