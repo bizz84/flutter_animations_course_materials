@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class CenteredSvgIcon extends StatelessWidget {
-  const CenteredSvgIcon({Key? key, required this.iconName, required this.color})
-      : super(key: key);
+  const CenteredSvgIcon({super.key, required this.iconName, required this.color});
   final String iconName;
   final Color color;
 
@@ -17,7 +16,7 @@ class CenteredSvgIcon extends StatelessWidget {
       child: isSvg
           ? SvgPicture.asset(
               iconName,
-              color: color,
+              colorFilter: ColorFilter.mode(color, BlendMode.clear),
             )
           : FittedBox(
               child: Text(
