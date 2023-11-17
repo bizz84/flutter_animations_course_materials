@@ -4,17 +4,19 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
-    final darkBlue = Color.fromARGB(255, 18, 32, 47);
+    const darkBlue = Color.fromARGB(255, 18, 32, 47);
     return MaterialApp(
       theme: ThemeData.dark().copyWith(scaffoldBackgroundColor: darkBlue),
       debugShowCheckedModeBanner: false,
-      home: GameWidget(),
+      home: const GameWidget(),
     );
   }
 }
@@ -43,7 +45,7 @@ class GameTimer {
   void startGame() {
     _timer?.cancel();
     remainingSeconds.value = 15;
-    _timer = Timer.periodic(Duration(seconds: 1), (timer) {
+    _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
       remainingSeconds.value--;
       if (remainingSeconds.value == 0) {
         _timer?.cancel();
@@ -53,8 +55,10 @@ class GameTimer {
 }
 
 class GameWidget extends StatefulWidget {
+  const GameWidget({super.key});
+
   @override
-  _GameWidgetState createState() => _GameWidgetState();
+  State<GameWidget> createState() => _GameWidgetState();
 }
 
 class _GameWidgetState extends State<GameWidget> {
@@ -65,12 +69,12 @@ class _GameWidgetState extends State<GameWidget> {
   late TargetData _targetData;
   int _score = 0;
   bool _gameInProgress = false;
-  GameTimer _gameTimer = GameTimer();
+  final GameTimer _gameTimer = GameTimer();
 
   @override
   void initState() {
     super.initState();
-    _playerAlignment = Alignment(0, 0);
+    _playerAlignment = const Alignment(0, 0);
     _gameTimer.remainingSeconds.addListener(() {
       if (_gameTimer.remainingSeconds.value == 0) {
         setState(() {
@@ -114,7 +118,7 @@ class _GameWidgetState extends State<GameWidget> {
       if (selectedIndex != null) {
         _playerAlignment = _targets[selectedIndex];
         final didScore = selectedIndex == _targetData.index;
-        Future.delayed(Duration(milliseconds: 250), () {
+        Future.delayed(const Duration(milliseconds: 250), () {
           setState(() {
             if (didScore) {
               _score++;
@@ -148,7 +152,7 @@ class _GameWidgetState extends State<GameWidget> {
           // Player
           AnimatedAlign(
             alignment: _playerAlignment,
-            duration: Duration(milliseconds: 250),
+            duration: const Duration(milliseconds: 250),
             curve: Curves.easeInOut,
             child: Container(
               width: 100,
@@ -166,7 +170,7 @@ class _GameWidgetState extends State<GameWidget> {
               onTapDown: (details) => _handleTapDown(details, i),
               child: AnimatedAlign(
                 alignment: _targets[i],
-                duration: Duration(milliseconds: 250),
+                duration: const Duration(milliseconds: 250),
                 curve: Curves.easeInOut,
                 child: Target(
                   color: _targetColors[i],
@@ -177,7 +181,7 @@ class _GameWidgetState extends State<GameWidget> {
             ),
           // Next Command
           Align(
-            alignment: Alignment(0, 0),
+            alignment: const Alignment(0, 0),
             child: IgnorePointer(
               ignoring: _gameInProgress,
               child: Column(
@@ -202,14 +206,15 @@ class _GameWidgetState extends State<GameWidget> {
                         )
                       : OutlinedButton(
                           style: OutlinedButton.styleFrom(
-                            shape: StadiumBorder(),
-                            side: BorderSide(width: 2, color: Colors.white),
-                          ),
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: TextPrompt('Start', color: Colors.white),
+                            shape: const StadiumBorder(),
+                            side:
+                                const BorderSide(width: 2, color: Colors.white),
                           ),
                           onPressed: _startGame,
+                          child: const Padding(
+                            padding: EdgeInsets.all(8.0),
+                            child: TextPrompt('Start', color: Colors.white),
+                          ),
                         ),
                 ],
               ),
@@ -223,11 +228,11 @@ class _GameWidgetState extends State<GameWidget> {
 
 class Target extends StatelessWidget {
   const Target({
-    Key? key,
+    super.key,
     required this.color,
     required this.textColor,
     required this.text,
-  }) : super(key: key);
+  });
   final Color color;
   final Color textColor;
   final String text;
@@ -256,10 +261,10 @@ class Target extends StatelessWidget {
 class TextPrompt extends StatelessWidget {
   const TextPrompt(
     this.text, {
-    Key? key,
+    super.key,
     required this.color,
     this.fontSize = 32,
-  }) : super(key: key);
+  });
   final String text;
   final Color color;
   final double fontSize;
@@ -267,13 +272,12 @@ class TextPrompt extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AnimatedDefaultTextStyle(
-      child: Text(text),
-      duration: Duration(milliseconds: 250),
+      duration: const Duration(milliseconds: 250),
       style: TextStyle(
         color: color,
         fontWeight: FontWeight.bold,
         fontSize: fontSize,
-        shadows: [
+        shadows: const [
           Shadow(
             blurRadius: 4.0,
             color: Colors.black,
@@ -281,6 +285,7 @@ class TextPrompt extends StatelessWidget {
           ),
         ],
       ),
+      child: Text(text),
     );
   }
 }
