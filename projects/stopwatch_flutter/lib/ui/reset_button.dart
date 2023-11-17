@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class ResetButton extends StatelessWidget {
-  const ResetButton({Key? key, this.onPressed}) : super(key: key);
+  const ResetButton({super.key, this.onPressed});
   final VoidCallback? onPressed;
 
   @override
@@ -11,7 +11,7 @@ class ResetButton extends StatelessWidget {
         color: Colors.grey[900], // button color
         child: InkWell(
           onTap: onPressed,
-          child: Align(
+          child: const Align(
             alignment: Alignment.center,
             child: Text(
               'Reset',
