@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 
 class StartStopButton extends StatelessWidget {
-  const StartStopButton({Key? key, required this.isRunning, this.onPressed})
-      : super(key: key);
+  const StartStopButton({super.key, required this.isRunning, this.onPressed});
   final bool isRunning;
   final VoidCallback? onPressed;
 
