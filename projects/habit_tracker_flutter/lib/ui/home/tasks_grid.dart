@@ -15,6 +15,8 @@ import 'package:habit_tracker_flutter/ui/task/task_with_name_loader.dart';
 import 'package:habit_tracker_flutter/ui/theming/app_theme.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 
+const featureFlagAlwaysShowAddItem = true;
+
 class TasksGrid extends StatefulWidget {
   const TasksGrid({super.key, required this.tasks, this.onAddOrEditTask});
   final List<Task> tasks;
@@ -115,12 +117,18 @@ class TasksGridState extends State<TasksGrid>
           itemBuilder: (context, index) {
             return Consumer(builder: (context, ref, _) {
               if (index == widget.tasks.length) {
-                return CustomFadeTransition(
-                  animation: animationController,
-                  child: AddTaskItem(
-                    onCompleted: _isEditing ? () => _addNewTask(ref) : null,
-                  ),
-                );
+                if (featureFlagAlwaysShowAddItem) {
+                  return AddTaskItem(
+                    onCompleted: () => _addNewTask(ref),
+                  );
+                } else {
+                  return CustomFadeTransition(
+                    animation: animationController,
+                    child: AddTaskItem(
+                      onCompleted: _isEditing ? () => _addNewTask(ref) : null,
+                    ),
+                  );
+                }
               }
               final task = widget.tasks[index];
               return TaskWithNameLoader(
