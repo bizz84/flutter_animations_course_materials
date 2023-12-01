@@ -69,24 +69,4 @@ class AppAssets {
     washHands,
     water,
   ];
-
-  // static Future<void> preloadSVGs() async {
-  //   final assets = [
-  //     // system UI
-  //     check,
-  //     plus,
-  //     threeDots,
-  //     delete,
-  //     navigationClose,
-  //     navigationBack,
-  //     // tasks
-  //     ...allTaskIcons,
-  //   ];
-  //   for (final asset in assets) {
-  //     await precachePicture(
-  //       ExactAssetPicture(SvgPicture.svgStringDecoder, asset),
-  //       null,
-  //     );
-  //   }
-  // }
 }
