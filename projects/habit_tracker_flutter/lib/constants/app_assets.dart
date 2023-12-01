@@ -1,5 +1,7 @@
 //import 'package:flutter_svg/flutter_svg.dart';
 
+import 'package:flutter_svg/flutter_svg.dart';
+
 class AppAssets {
   // system UI
   static const check = 'assets/check.svg';
@@ -70,23 +72,24 @@ class AppAssets {
     water,
   ];
 
-  // static Future<void> preloadSVGs() async {
-  //   final assets = [
-  //     // system UI
-  //     check,
-  //     plus,
-  //     threeDots,
-  //     delete,
-  //     navigationClose,
-  //     navigationBack,
-  //     // tasks
-  //     ...allTaskIcons,
-  //   ];
-  //   for (final asset in assets) {
-  //     await precachePicture(
-  //       ExactAssetPicture(SvgPicture.svgStringDecoder, asset),
-  //       null,
-  //     );
-  //   }
-  // }
+  static Future<void> preloadSVGs() async {
+    final assets = [
+      // system UI
+      check,
+      plus,
+      threeDots,
+      delete,
+      navigationClose,
+      navigationBack,
+      // tasks
+      ...allTaskIcons,
+    ];
+    for (final asset in assets) {
+      final loader = SvgAssetLoader(asset);
+      await svg.cache.putIfAbsent(
+        loader.cacheKey(null),
+        () => loader.loadBytes(null),
+      );
+    }
+  }
 }
